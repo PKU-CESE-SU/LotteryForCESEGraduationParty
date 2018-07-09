@@ -18,6 +18,8 @@ namespace LotteryForCESEGraduationParty
                 try
                 {
                     file = File.CreateText(logName);
+                    // 自动写入
+                    file.AutoFlush = true;
                 }
                 catch
                 {

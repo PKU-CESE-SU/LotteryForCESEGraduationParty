@@ -33,6 +33,7 @@ namespace LotteryForCESEGraduationParty
             timer.Elapsed += Timer_Elapsed;
             try
             {
+                // 尝试打开背景图片
                 BackgroundImage = System.Drawing.Image.FromFile("background.jpg");
             }
             catch
@@ -82,7 +83,7 @@ namespace LotteryForCESEGraduationParty
                 countList.Clear();
                 try
                 {
-                    // 尝试打开 Item.txt 并读入所有票根
+                    // 尝试打开 item.txt 并读入所有票根
                     StreamReader file = File.OpenText("item.txt");
                     while (!file.EndOfStream)
                     {
@@ -94,6 +95,11 @@ namespace LotteryForCESEGraduationParty
                         }
                     }
                     file.Close();
+                    if (numList.Count == 0)
+                    {
+                        // 如果文件为空则抛出错误，使用默认数据
+                        throw new Exception();
+                    }
                     log.WriteLine(String.Format("已读取全部票根，共有 {0} 张票根，编号分别为：{1}。", numList.Count, String.Join(", ", numList.ToArray())));
                 }
                 catch
