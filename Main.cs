@@ -109,7 +109,7 @@ namespace LotteryForCESEGraduationParty
                     for (i = 1; i < 101; i++)
                     {
                         numList.Add(i);
-                        countList.Add(i);
+                        countList.Add(0);
                     }
                     log.WriteLine(String.Format("票根数据不存在，使用默认数据，共有 {0} 张票根，编号分别为：{1}。", numList.Count, String.Join(", ", numList.ToArray())));
                 }
